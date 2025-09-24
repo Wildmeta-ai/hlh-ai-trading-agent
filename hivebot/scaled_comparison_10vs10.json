@@ -1,0 +1,65 @@
+{
+  "generated_at": "2025-08-29T21:07:26.175058",
+  "system_baseline": {
+    "timestamp": "2025-08-29T21:05:26.105002",
+    "cpu_count": 16,
+    "cpu_percent": 0.0,
+    "memory_total_gb": 48.0,
+    "memory_available_gb": 3.5,
+    "memory_used_percent": 92.7,
+    "disk_total_gb": 926.35,
+    "disk_free_gb": 352.25,
+    "disk_used_percent": 1.3
+  },
+  "processes": {
+    "HUMMINGBOT": {
+      "process_name": "hbot_sim",
+      "aggregated_instances": true,
+      "monitoring_duration_minutes": 2.0,
+      "samples_collected": 23,
+      "avg_process_count": 12.0,
+      "cpu": {
+        "avg_percent": 0.1,
+        "max_percent": 0.1,
+        "min_percent": 0.0
+      },
+      "memory": {
+        "avg_mb": 625.25,
+        "max_mb": 814.09,
+        "min_mb": 173.81,
+        "avg_percent": 1.27
+      },
+      "threads": {
+        "avg_count": 23.0,
+        "max_count": 23,
+        "min_count": 23
+      },
+      "children_processes": {
+        "avg_count": 1.0,
+        "max_count": 1
+      },
+      "latest_metrics": {
+        "timestamp": "2025-08-29T21:07:21.169429",
+        "pid": "[97477,97512,97551,97582,97614...]",
+        "name": "hbot_sim (aggregated)",
+        "cpu_percent": 0.1,
+        "memory_rss_mb": 174.56,
+        "memory_vms_mb": 839810.12,
+        "memory_percent": 0.36,
+        "num_threads": 23,
+        "num_fds": 37,
+        "network_bytes_sent": 3941188608,
+        "network_bytes_recv": 6568271872,
+        "num_children": 1,
+        "process_count": 12
+      }
+    }
+  },
+  "summary": {
+    "total_processes_monitored": 1,
+    "total_avg_cpu_percent": 0.1,
+    "total_avg_memory_mb": 625.25,
+    "monitoring_period_minutes": 2.0
+  },
+  "comparison": {}
+}

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  hivebot-docker:
+    container_name: hivebot-docker-instance
+    build:
+      context: .
+      dockerfile: Dockerfile.hivebot
+    volumes:
+      # Mount data directories for persistence (but not source code)
+      - ./logs:/app/hummingbot/logs
+      - hivebot-docker-data:/app/hummingbot/data
+    ports:
+      - "8083:8082"  # Map container port 8082 to host port 8083 to avoid conflicts
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CONFIG_PASSWORD=test_password
+      - HIVE_PORT=8082  # Internal container port
+      - HIVE_STRATEGIES=0  # Start with 0 strategies
+    networks:
+      - hivebot-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    tty: true
+    stdin_open: true
+
+volumes:
+  hivebot-docker-data:
+
+networks:
+  hivebot-network:
+    driver: bridge

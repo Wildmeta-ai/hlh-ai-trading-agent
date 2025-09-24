@@ -1,0 +1,127 @@
+{
+  "generated_at": "2025-08-29T21:10:15.357388",
+  "system_baseline": {
+    "timestamp": "2025-08-29T21:08:10.256317",
+    "cpu_count": 16,
+    "cpu_percent": 0.0,
+    "memory_total_gb": 48.0,
+    "memory_available_gb": 3.52,
+    "memory_used_percent": 92.7,
+    "disk_total_gb": 926.35,
+    "disk_free_gb": 352.23,
+    "disk_used_percent": 1.3
+  },
+  "processes": {
+    "HIVEBOT": {
+      "process_name": "hive",
+      "aggregated_instances": false,
+      "monitoring_duration_minutes": 2.08,
+      "samples_collected": 24,
+      "avg_process_count": 1,
+      "cpu": {
+        "avg_percent": 0.1,
+        "max_percent": 0.1,
+        "min_percent": 0.0
+      },
+      "memory": {
+        "avg_mb": 201.91,
+        "max_mb": 202.92,
+        "min_mb": 201.08,
+        "avg_percent": 0.41
+      },
+      "threads": {
+        "avg_count": 3.0,
+        "max_count": 3,
+        "min_count": 3
+      },
+      "children_processes": {
+        "avg_count": 0.0,
+        "max_count": 0
+      },
+      "latest_metrics": {
+        "timestamp": "2025-08-29T21:10:10.172707",
+        "pid": 95656,
+        "name": "python3.12",
+        "cpu_percent": 0.1,
+        "memory_rss_mb": 202.92,
+        "memory_vms_mb": 38313.25,
+        "memory_percent": 0.41,
+        "num_threads": 3,
+        "num_fds": 46,
+        "network_bytes_sent": 3949373440,
+        "network_bytes_recv": 2428517376,
+        "num_children": 0,
+        "process_count": 1
+      }
+    },
+    "HUMMINGBOT": {
+      "process_name": "hbot_sim",
+      "aggregated_instances": true,
+      "monitoring_duration_minutes": 2.08,
+      "samples_collected": 24,
+      "avg_process_count": 12.0,
+      "cpu": {
+        "avg_percent": 0.1,
+        "max_percent": 0.1,
+        "min_percent": 0.0
+      },
+      "memory": {
+        "avg_mb": 159.88,
+        "max_mb": 167.05,
+        "min_mb": 133.23,
+        "avg_percent": 0.33
+      },
+      "threads": {
+        "avg_count": 23.0,
+        "max_count": 23,
+        "min_count": 23
+      },
+      "children_processes": {
+        "avg_count": 1.0,
+        "max_count": 1
+      },
+      "latest_metrics": {
+        "timestamp": "2025-08-29T21:10:10.352060",
+        "pid": "[9539,9547,97477,97512,97551...]",
+        "name": "hbot_sim (aggregated)",
+        "cpu_percent": 0.1,
+        "memory_rss_mb": 167.05,
+        "memory_vms_mb": 839810.33,
+        "memory_percent": 0.34,
+        "num_threads": 23,
+        "num_fds": 37,
+        "network_bytes_sent": 3949378560,
+        "network_bytes_recv": 2428720128,
+        "num_children": 1,
+        "process_count": 12
+      }
+    }
+  },
+  "summary": {
+    "total_processes_monitored": 2,
+    "total_avg_cpu_percent": 0.2,
+    "total_avg_memory_mb": 361.79,
+    "monitoring_period_minutes": 2.08
+  },
+  "comparison": {
+    "HIVEBOT_vs_HUMMINGBOT": {
+      "cpu_efficiency": {
+        "HIVEBOT_avg_cpu": 0.1,
+        "HUMMINGBOT_avg_cpu": 0.1,
+        "cpu_advantage": "HUMMINGBOT",
+        "cpu_savings_percent": 0.0
+      },
+      "memory_efficiency": {
+        "HIVEBOT_avg_memory_mb": 201.91,
+        "HUMMINGBOT_avg_memory_mb": 159.88,
+        "memory_advantage": "HUMMINGBOT",
+        "memory_savings_mb": 42.03
+      },
+      "process_efficiency": {
+        "HIVEBOT_avg_children": 0.0,
+        "HUMMINGBOT_avg_children": 1.0,
+        "process_advantage": "HIVEBOT"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+FROM continuumio/miniconda3:latest
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    curl \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app/hummingbot
+
+# Copy all hive-related files for hivebot
+COPY hive_*.py ./
+COPY hummingbot ./hummingbot/
+
+# Create conda environment for hummingbot
+RUN conda create -n hummingbot python=3.10 -y
+
+# Activate environment and install dependencies
+SHELL ["conda", "run", "-n", "hummingbot", "/bin/bash", "-c"]
+
+# Install essential dependencies first
+RUN pip install --upgrade pip setuptools wheel cython
+
+# Install core dependencies needed for hivebot
+RUN pip install requests flask flask-cors sqlalchemy aiohttp numpy pandas ccxt websockets
+
+# Try to compile Cython extensions if setup.py exists
+RUN python setup.py build_ext --inplace 2>/dev/null || echo "Cython compilation skipped"
+
+# Create directories for data persistence
+RUN mkdir -p /app/hummingbot/data /app/hummingbot/logs /app/hummingbot/conf
+
+# Copy configuration files if they exist
+RUN mkdir -p ./conf ./data
+
+# Environment variables for configuration
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app/hummingbot
+
+# Expose port
+EXPOSE 8082
+
+# Default command to run hivebot with 0 strategies
+CMD ["conda", "run", "-n", "hummingbot", "python", "hive_dynamic_core_modular.py", "--trading", "--port", "8082", "--db-path", "hive_strategies_docker.db"]

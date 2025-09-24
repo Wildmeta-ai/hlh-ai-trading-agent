@@ -1,0 +1,38 @@
+services:
+  hivebot:
+    container_name: hivebot-instance-2
+    image: python:3.10
+    working_dir: /app
+    volumes:
+      # Mount entire hummingbot directory
+      - .:/app
+    ports:
+      - "8082:8082"  # REST API port (different from existing instance on 8081)
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CONFIG_PASSWORD=test_password
+      - HIVE_PORT=8082
+      - PYTHONPATH=/app
+    command: >
+      bash -c "
+        apt-get update && apt-get install -y build-essential &&
+        pip install --upgrade pip &&
+        pip install requests flask flask-cors sqlalchemy aiohttp numpy pandas ccxt cython &&
+        cd /app &&
+        python setup.py build_ext --inplace || true &&
+        python hive_dynamic_core_modular.py --trading --port 8082
+      "
+    networks:
+      - hivebot-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    tty: true
+    stdin_open: true
+
+networks:
+  hivebot-network:
+    driver: bridge
